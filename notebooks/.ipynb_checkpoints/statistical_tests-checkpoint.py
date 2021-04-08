@@ -41,3 +41,24 @@ def permutation_pearsonr(y_true, y_pred, n_samples=10000, seed=42):
             b += 1
     p = (b + 1) / (n_samples + 1)
     return r, p
+
+def bootstrap_pearsonr_mwu(y_true, y_pred_1, y_pred_2, n_samples=10000, seed=42):
+    assert len(y_true) == len(y_pred)
+    indices = np.arange(len(y_true))
+    coefficients_1 = []
+    r = stats.pearsonr(y_true, y_pred)[0]
+    rng = np.random.default_rng(seed)
+    for i in range(n_samples):
+        sample_indices = rng.choice(indices, size=len(indices), replace=True)
+        y_true_sample = y_true[sample_indices]
+        y_pred_sample = y_pred_1[sample_indices]
+        r_boot = stats.pearsonr(y_true_sample, y_pred_sample)[0]
+        coefficients_1.append(r_boot)
+    for i in range(n_samples):
+        sample_indices = rng.choice(indices, size=len(indices), replace=True)
+        y_true_sample = y_true[sample_indices]
+        y_pred_sample = y_pred_2[sample_indices]
+        r_boot = stats.pearsonr(y_true_sample, y_pred_sample)[0]
+        coefficients_2.append(r_boot)
+    u = stats.mannwhitneyu(coefficients_1, coefficients_2, alternative='two-sided')
+    return u
