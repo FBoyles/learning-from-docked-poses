@@ -2,7 +2,7 @@ import numpy as np
 from scipy import stats
 
 def bootstrap_pearsonr(y_true, y_pred, n_samples=10000, seed=42):
-    """Estimates a two-sided confidence interval for the Pearson correlation coefficient using the bootstrap method."""
+    """Estimates a two-sided 95% confidence interval for the Pearson correlation coefficient using the bootstrap method."""
     assert len(y_true) == len(y_pred)
     indices = np.arange(len(y_true))
     coefficients = []
@@ -43,6 +43,7 @@ def permutation_pearsonr(y_true, y_pred, n_samples=10000, seed=42):
     return r, p
 
 def bootstrap_pearsonr_mwu(y_true, y_pred_1, y_pred_2, n_samples=10000, seed=42):
+    """Applies a two-sided Mann Whitney U test to bootstrapped Pearson correlation coefficients."""
     assert len(y_true) == len(y_pred)
     indices = np.arange(len(y_true))
     coefficients_1 = []
