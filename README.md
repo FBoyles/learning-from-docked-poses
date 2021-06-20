@@ -12,10 +12,10 @@ Due to their large size, files under ./data are tracked by git-lfs. To clone the
 
 There are two data sets used in this paper - the PDBbind Refined Set and our Updated DUD-E Diverse Subset. The latter consists of six targets taken from the DUD-E Diverse Subset - AKT1, CP3A4, GCR, HIVPR, HIVRT and KIF11 - with ligands and binding affinity data for each target extracted from ChEMBL version 25. We have made this data set available so that others can use it their own experiments. The following files provided in the /data/ directory:
 
-\<target\>_\<chembl_id>_extracted_data.csv - ligand binding data extracted from ChEMBL version 25 for \<target\>; \<chembl_id\> denotes the ChEMBL target ID used to query the database.<\br>
-\<target\>\_KI\_clean.csv - binding affinity values (in pK units) for the ligands of \<target\>, indexed by ligand ChEMBL ID.<\br>
-\<target\>\_KI\_docked\_features.json - Python dictionary containing RF-Score v3 features computed using docked poses of the ligands of \<target\>. Keys are of the form \<ligand chembl id\>\_\<docked pose number\>.<\br>
-\<target\>\_KI\_rdkit\_descriptors.json - Python dictionary containing RDKit 2D molecular descriptors computed for the ligands of \<target\>. Keys are ligand ChEMBL IDs.<\br>
+\<target\>\_\<chembl_id\>\_extracted_data.csv - ligand binding data extracted from ChEMBL version 25 for \<target\>; \<chembl_id\> denotes the ChEMBL target ID used to query the database.<br>
+\<target\>\_KI\_clean.csv - binding affinity values (in pK units) for the ligands of \<target\>, indexed by ligand ChEMBL ID.<br>
+\<target\>\_KI\_docked\_features.json - Python dictionary containing RF-Score v3 features computed using docked poses of the ligands of \<target\>. Keys are of the form \<ligand chembl id\>\_\<docked pose number\>.<br>
+\<target\>\_KI\_rdkit\_descriptors.json - Python dictionary containing RDKit 2D molecular descriptors computed for the ligands of \<target\>. Keys are ligand ChEMBL IDs.<br>
 
 These files are used by the notebook 'dud-e\_chembl.ipynb' to produce the results presented in Table 5.
 
